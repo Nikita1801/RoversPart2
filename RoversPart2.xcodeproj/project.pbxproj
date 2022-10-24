@@ -7,23 +7,54 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A78CE18E29030B1F000C88A6 /* CheckMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78CE18D29030B1F000C88A6 /* CheckMarkView.swift */; };
+		A78CE19429066EEB000C88A6 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78CE19329066EEB000C88A6 /* PhotosViewController.swift */; };
+		A78CE19629066FE6000C88A6 /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78CE19529066FE6000C88A6 /* PhotosCollectionViewCell.swift */; };
+		A78CE198290670D7000C88A6 /* PhotosPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78CE197290670D7000C88A6 /* PhotosPresenter.swift */; };
+		A78CE19B29067861000C88A6 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = A78CE19A29067861000C88A6 /* Nuke */; };
+		A78CE19D29070786000C88A6 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78CE19C29070786000C88A6 /* SettingsModel.swift */; };
+		A78CE19F29070C8A000C88A6 /* SettingsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78CE19E29070C8A000C88A6 /* SettingsAssembly.swift */; };
+		A78CE1A129070FF8000C88A6 /* CameraAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78CE1A029070FF8000C88A6 /* CameraAssembly.swift */; };
 		A7CFDC2E29016E88008589E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CFDC2D29016E88008589E3 /* AppDelegate.swift */; };
 		A7CFDC3029016E88008589E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CFDC2F29016E88008589E3 /* SceneDelegate.swift */; };
-		A7CFDC3229016E88008589E3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CFDC3129016E88008589E3 /* ViewController.swift */; };
-		A7CFDC3529016E88008589E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7CFDC3329016E88008589E3 /* Main.storyboard */; };
 		A7CFDC3729016E89008589E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7CFDC3629016E89008589E3 /* Assets.xcassets */; };
-		A7CFDC3A29016E89008589E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7CFDC3829016E89008589E3 /* LaunchScreen.storyboard */; };
+		A7CFDC42290170C6008589E3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CFDC41290170C6008589E3 /* TabBarController.swift */; };
+		A7CFDC44290173B8008589E3 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CFDC43290173B8008589E3 /* CameraViewController.swift */; };
+		A7CFDC46290173D0008589E3 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CFDC45290173D0008589E3 /* SettingsViewController.swift */; };
+		A7CFDC4B290177FD008589E3 /* CameraPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CFDC4A290177FD008589E3 /* CameraPresenter.swift */; };
+		A7CFDC4D29017810008589E3 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CFDC4C29017810008589E3 /* SettingsPresenter.swift */; };
+		A7CFDC4F290178FA008589E3 /* CameraModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CFDC4E290178FA008589E3 /* CameraModel.swift */; };
+		A7CFDC5129017C76008589E3 /* RoverData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CFDC5029017C76008589E3 /* RoverData.swift */; };
+		A7CFDC5429017F7A008589E3 /* RoverService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CFDC5329017F7A008589E3 /* RoverService.swift */; };
+		A7CFDC5629019C6E008589E3 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CFDC5529019C6E008589E3 /* UIColor+Extension.swift */; };
+		A7CFDC5829019F08008589E3 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CFDC5729019F08008589E3 /* SettingsTableViewCell.swift */; };
+		A7CFDC5A2901B25A008589E3 /* CameraCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CFDC592901B25A008589E3 /* CameraCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A78CE18D29030B1F000C88A6 /* CheckMarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckMarkView.swift; sourceTree = "<group>"; };
+		A78CE19329066EEB000C88A6 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
+		A78CE19529066FE6000C88A6 /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
+		A78CE197290670D7000C88A6 /* PhotosPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosPresenter.swift; sourceTree = "<group>"; };
+		A78CE19C29070786000C88A6 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
+		A78CE19E29070C8A000C88A6 /* SettingsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAssembly.swift; sourceTree = "<group>"; };
+		A78CE1A029070FF8000C88A6 /* CameraAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraAssembly.swift; sourceTree = "<group>"; };
 		A7CFDC2A29016E88008589E3 /* RoversPart2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoversPart2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7CFDC2D29016E88008589E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7CFDC2F29016E88008589E3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A7CFDC3129016E88008589E3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		A7CFDC3429016E88008589E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A7CFDC3629016E89008589E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A7CFDC3929016E89008589E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A7CFDC3B29016E89008589E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A7CFDC41290170C6008589E3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		A7CFDC43290173B8008589E3 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		A7CFDC45290173D0008589E3 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		A7CFDC4A290177FD008589E3 /* CameraPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPresenter.swift; sourceTree = "<group>"; };
+		A7CFDC4C29017810008589E3 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
+		A7CFDC4E290178FA008589E3 /* CameraModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraModel.swift; sourceTree = "<group>"; };
+		A7CFDC5029017C76008589E3 /* RoverData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverData.swift; sourceTree = "<group>"; };
+		A7CFDC5329017F7A008589E3 /* RoverService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverService.swift; sourceTree = "<group>"; };
+		A7CFDC5529019C6E008589E3 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		A7CFDC5729019F08008589E3 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		A7CFDC592901B25A008589E3 /* CameraCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,12 +62,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A78CE19B29067861000C88A6 /* Nuke in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A78CE19229066E9B000C88A6 /* PhotosView */ = {
+			isa = PBXGroup;
+			children = (
+				A78CE19329066EEB000C88A6 /* PhotosViewController.swift */,
+				A78CE19529066FE6000C88A6 /* PhotosCollectionViewCell.swift */,
+			);
+			path = PhotosView;
+			sourceTree = "<group>";
+		};
 		A7CFDC2129016E88008589E3 = {
 			isa = PBXGroup;
 			children = (
@@ -58,13 +99,75 @@
 			children = (
 				A7CFDC2D29016E88008589E3 /* AppDelegate.swift */,
 				A7CFDC2F29016E88008589E3 /* SceneDelegate.swift */,
-				A7CFDC3129016E88008589E3 /* ViewController.swift */,
-				A7CFDC3329016E88008589E3 /* Main.storyboard */,
+				A7CFDC5229017F31008589E3 /* NetworkService */,
+				A7CFDC5029017C76008589E3 /* RoverData.swift */,
+				A7CFDC49290177A7008589E3 /* Model */,
+				A7CFDC4729017779008589E3 /* View */,
+				A7CFDC4829017782008589E3 /* Presenter */,
+				A7CFDC5529019C6E008589E3 /* UIColor+Extension.swift */,
 				A7CFDC3629016E89008589E3 /* Assets.xcassets */,
-				A7CFDC3829016E89008589E3 /* LaunchScreen.storyboard */,
 				A7CFDC3B29016E89008589E3 /* Info.plist */,
+				A78CE19E29070C8A000C88A6 /* SettingsAssembly.swift */,
+				A78CE1A029070FF8000C88A6 /* CameraAssembly.swift */,
 			);
 			path = RoversPart2;
+			sourceTree = "<group>";
+		};
+		A7CFDC4729017779008589E3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A7CFDC41290170C6008589E3 /* TabBarController.swift */,
+				A7CFDC5B2901B2A4008589E3 /* CameraView */,
+				A7CFDC5C2901B2BE008589E3 /* SettingsView */,
+				A78CE19229066E9B000C88A6 /* PhotosView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A7CFDC4829017782008589E3 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				A7CFDC4A290177FD008589E3 /* CameraPresenter.swift */,
+				A7CFDC4C29017810008589E3 /* SettingsPresenter.swift */,
+				A78CE197290670D7000C88A6 /* PhotosPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		A7CFDC49290177A7008589E3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A7CFDC4E290178FA008589E3 /* CameraModel.swift */,
+				A78CE19C29070786000C88A6 /* SettingsModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A7CFDC5229017F31008589E3 /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				A7CFDC5329017F7A008589E3 /* RoverService.swift */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		A7CFDC5B2901B2A4008589E3 /* CameraView */ = {
+			isa = PBXGroup;
+			children = (
+				A7CFDC43290173B8008589E3 /* CameraViewController.swift */,
+				A7CFDC592901B25A008589E3 /* CameraCollectionViewCell.swift */,
+			);
+			path = CameraView;
+			sourceTree = "<group>";
+		};
+		A7CFDC5C2901B2BE008589E3 /* SettingsView */ = {
+			isa = PBXGroup;
+			children = (
+				A7CFDC45290173D0008589E3 /* SettingsViewController.swift */,
+				A7CFDC5729019F08008589E3 /* SettingsTableViewCell.swift */,
+				A78CE18D29030B1F000C88A6 /* CheckMarkView.swift */,
+			);
+			path = SettingsView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +186,9 @@
 			dependencies = (
 			);
 			name = RoversPart2;
+			packageProductDependencies = (
+				A78CE19A29067861000C88A6 /* Nuke */,
+			);
 			productName = RoversPart2;
 			productReference = A7CFDC2A29016E88008589E3 /* RoversPart2.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +217,9 @@
 				Base,
 			);
 			mainGroup = A7CFDC2129016E88008589E3;
+			packageReferences = (
+				A78CE19929067861000C88A6 /* XCRemoteSwiftPackageReference "Nuke" */,
+			);
 			productRefGroup = A7CFDC2B29016E88008589E3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -125,9 +234,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7CFDC3A29016E89008589E3 /* LaunchScreen.storyboard in Resources */,
 				A7CFDC3729016E89008589E3 /* Assets.xcassets in Resources */,
-				A7CFDC3529016E88008589E3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,32 +245,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7CFDC3229016E88008589E3 /* ViewController.swift in Sources */,
+				A78CE19F29070C8A000C88A6 /* SettingsAssembly.swift in Sources */,
+				A78CE19D29070786000C88A6 /* SettingsModel.swift in Sources */,
+				A7CFDC5A2901B25A008589E3 /* CameraCollectionViewCell.swift in Sources */,
+				A7CFDC5429017F7A008589E3 /* RoverService.swift in Sources */,
 				A7CFDC2E29016E88008589E3 /* AppDelegate.swift in Sources */,
+				A7CFDC5829019F08008589E3 /* SettingsTableViewCell.swift in Sources */,
+				A78CE18E29030B1F000C88A6 /* CheckMarkView.swift in Sources */,
+				A7CFDC44290173B8008589E3 /* CameraViewController.swift in Sources */,
+				A7CFDC5629019C6E008589E3 /* UIColor+Extension.swift in Sources */,
+				A78CE198290670D7000C88A6 /* PhotosPresenter.swift in Sources */,
+				A7CFDC42290170C6008589E3 /* TabBarController.swift in Sources */,
+				A7CFDC4B290177FD008589E3 /* CameraPresenter.swift in Sources */,
+				A78CE1A129070FF8000C88A6 /* CameraAssembly.swift in Sources */,
+				A78CE19429066EEB000C88A6 /* PhotosViewController.swift in Sources */,
+				A7CFDC46290173D0008589E3 /* SettingsViewController.swift in Sources */,
 				A7CFDC3029016E88008589E3 /* SceneDelegate.swift in Sources */,
+				A7CFDC5129017C76008589E3 /* RoverData.swift in Sources */,
+				A78CE19629066FE6000C88A6 /* PhotosCollectionViewCell.swift in Sources */,
+				A7CFDC4F290178FA008589E3 /* CameraModel.swift in Sources */,
+				A7CFDC4D29017810008589E3 /* SettingsPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		A7CFDC3329016E88008589E3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A7CFDC3429016E88008589E3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		A7CFDC3829016E89008589E3 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A7CFDC3929016E89008589E3 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		A7CFDC3C29016E89008589E3 /* Debug */ = {
@@ -292,7 +397,7 @@
 				INFOPLIST_FILE = RoversPart2/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -320,7 +425,7 @@
 				INFOPLIST_FILE = RoversPart2/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -358,6 +463,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A78CE19929067861000C88A6 /* XCRemoteSwiftPackageReference "Nuke" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/Nuke";
+			requirement = {
+				kind = exactVersion;
+				version = 10.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A78CE19A29067861000C88A6 /* Nuke */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A78CE19929067861000C88A6 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = Nuke;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A7CFDC2229016E88008589E3 /* Project object */;
 }
