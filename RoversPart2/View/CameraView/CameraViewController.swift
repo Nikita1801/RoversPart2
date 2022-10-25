@@ -16,7 +16,7 @@ protocol CameraViewControllerProtocol: UIViewController {
 
 final class CameraViewController: UIViewController {
 
-    var presenter: CameraPresenterProtocol?
+    weak var presenter: CameraPresenterProtocol?
     private var roverData: [String: [Photos]] = [:]
 //    private var cameraName = ""
 

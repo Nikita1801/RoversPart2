@@ -25,11 +25,13 @@ final class TabBarController: UITabBarController {
         
         let cameraPresenter = CameraAssembly.make()
         let settingsPresenter = SettingsAssembly.make()
+        
         settingsPresenter.delegate = cameraPresenter
+        
         guard let settingViewControleer = settingsPresenter.viewController,
               let cameraViewController = cameraPresenter.viewController
         else { return }
-        
+
         
         viewControllers = [
             createNavigationController(vc: cameraViewController, itemName: "Камеры", itemImage: cameraImage),

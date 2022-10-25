@@ -21,7 +21,7 @@ protocol CameraPresenterProtocol: SettingsHandle {
 
 final class CameraPresenter {
     
-    weak var viewController: CameraViewControllerProtocol?
+    var viewController: CameraViewControllerProtocol?
     private let model: CameraModelProtocol
     private var date = Calendar.current.date(byAdding: .year, value: -1, to: Date())
     private var roverName = "curiosity"
