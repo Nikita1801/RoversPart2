@@ -22,14 +22,27 @@ final class HeaderCollectionReusableView: UICollectionReusableView {
         return button
     }()
     
+    private lazy var arrow: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = UIColor.lightGrey
+        button.layer.cornerRadius = 10
+        button.setImage(UIImage(named: "indicator"), for: .normal)
+        button.addTarget(self, action: #selector(openPhotos), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        return button
+    }()
+    
     @objc private func openPhotos() {
         callback?()
     }
     
-    func congigure(_ camera: String) {
+    func configure(_ camera: String) {
         backgroundColor = .white
         cameraName.setTitle(camera, for: .normal)
+        
         addSubview(cameraName)
+        addSubview(arrow)
         
         setConstraints()
     }
@@ -37,7 +50,12 @@ final class HeaderCollectionReusableView: UICollectionReusableView {
     private func setConstraints() {
         NSLayoutConstraint.activate([
             cameraName.leadingAnchor.constraint(equalTo: leadingAnchor),
-            cameraName.centerYAnchor.constraint(equalTo: centerYAnchor)
+            cameraName.centerYAnchor.constraint(equalTo: centerYAnchor),
+            
+            arrow.heightAnchor.constraint(equalToConstant: 20),
+            arrow.widthAnchor.constraint(equalToConstant: 20),
+            arrow.leadingAnchor.constraint(equalTo: cameraName.trailingAnchor, constant: 10),
+            arrow.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
     

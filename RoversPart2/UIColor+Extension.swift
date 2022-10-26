@@ -13,5 +13,6 @@ extension UIColor {
     static let customBlack = UIColor(named: "customBlack")
     static let customGrey = UIColor(named: "customGrey")
     static let customPurple = UIColor(named: "customPurple")
+    static let lightGrey = UIColor(named: "lightGrey")
     
 }

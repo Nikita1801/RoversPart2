@@ -28,10 +28,11 @@
 		A7CFDC5429017F7A008589E3 /* RoverService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CFDC5329017F7A008589E3 /* RoverService.swift */; };
 		A7CFDC5629019C6E008589E3 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CFDC5529019C6E008589E3 /* UIColor+Extension.swift */; };
 		A7CFDC5829019F08008589E3 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CFDC5729019F08008589E3 /* SettingsTableViewCell.swift */; };
-		A7CFDC5A2901B25A008589E3 /* CameraCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CFDC592901B25A008589E3 /* CameraCollectionViewCell.swift */; };
+		A7CFDC5A2901B25A008589E3 /* CameraPhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CFDC592901B25A008589E3 /* CameraPhotosCollectionViewCell.swift */; };
 		A7DE9D27290886550026CEFC /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DE9D25290886550026CEFC /* HeaderCollectionReusableView.swift */; };
 		A7DE9D2F2909964A0026CEFC /* PhotosAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DE9D2E2909964A0026CEFC /* PhotosAssembly.swift */; };
 		A7DE9D31290996A80026CEFC /* PhotosModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DE9D30290996A80026CEFC /* PhotosModel.swift */; };
+		A7DE9D332909C74B0026CEFC /* CameraCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DE9D322909C74B0026CEFC /* CameraCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,10 +58,11 @@
 		A7CFDC5329017F7A008589E3 /* RoverService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverService.swift; sourceTree = "<group>"; };
 		A7CFDC5529019C6E008589E3 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		A7CFDC5729019F08008589E3 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
-		A7CFDC592901B25A008589E3 /* CameraCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCollectionViewCell.swift; sourceTree = "<group>"; };
+		A7CFDC592901B25A008589E3 /* CameraPhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPhotosCollectionViewCell.swift; sourceTree = "<group>"; };
 		A7DE9D25290886550026CEFC /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		A7DE9D2E2909964A0026CEFC /* PhotosAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosAssembly.swift; sourceTree = "<group>"; };
 		A7DE9D30290996A80026CEFC /* PhotosModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosModel.swift; sourceTree = "<group>"; };
+		A7DE9D322909C74B0026CEFC /* CameraCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,7 +165,8 @@
 			isa = PBXGroup;
 			children = (
 				A7CFDC43290173B8008589E3 /* CameraViewController.swift */,
-				A7CFDC592901B25A008589E3 /* CameraCollectionViewCell.swift */,
+				A7DE9D322909C74B0026CEFC /* CameraCollectionViewCell.swift */,
+				A7CFDC592901B25A008589E3 /* CameraPhotosCollectionViewCell.swift */,
 				A7DE9D25290886550026CEFC /* HeaderCollectionReusableView.swift */,
 			);
 			path = CameraView;
@@ -256,7 +259,8 @@
 			files = (
 				A78CE19F29070C8A000C88A6 /* SettingsAssembly.swift in Sources */,
 				A78CE19D29070786000C88A6 /* SettingsModel.swift in Sources */,
-				A7CFDC5A2901B25A008589E3 /* CameraCollectionViewCell.swift in Sources */,
+				A7DE9D332909C74B0026CEFC /* CameraCollectionViewCell.swift in Sources */,
+				A7CFDC5A2901B25A008589E3 /* CameraPhotosCollectionViewCell.swift in Sources */,
 				A7CFDC5429017F7A008589E3 /* RoverService.swift in Sources */,
 				A7DE9D31290996A80026CEFC /* PhotosModel.swift in Sources */,
 				A7CFDC2E29016E88008589E3 /* AppDelegate.swift in Sources */,

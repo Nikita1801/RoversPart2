@@ -1,14 +1,15 @@
 //
-//  CameraCollectionViewCell.swift
+//  CollectionViewCell.swift
 //  RoversPart2
 //
-//  Created by Никита Макаревич on 20.10.2022.
+//  Created by Никита Макаревич on 26.10.2022.
 //
 
 import UIKit
-import Nuke
 
 final class CameraCollectionViewCell: UICollectionViewCell {
+    
+    private var photos: [Photos] = []
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -20,67 +21,50 @@ final class CameraCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private let photoImage: UIImageView = {
-        let image = UIImageView()
-        image.translatesAutoresizingMaskIntoConstraints = false
-        image.layer.cornerRadius = 4
-        image.contentMode = .scaleToFill
-        image.clipsToBounds = true
-        
-        return image
-    }()
-    
-    private let idLabel: UILabel = {
-        let label = UILabel()
-        label.text = "id #10212"
-        label.font = UIFont(name: "Helvetica", size: 13)
-        label.textColor = UIColor.customBlack
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        return label
-    }()
-    
-    private let solLabel: UILabel = {
-        let label = UILabel()
-        label.text = "СОЛ #1000"
-        label.font = UIFont(name: "Helvetica Bold", size: 8)
-        label.textColor = UIColor.customGrey
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        return label
-    }()
-    
-    func setValues(photo: Photos) {
-        idLabel.text = "id #\(photo.id)"
-        solLabel.text = "СОЛ #\(photo.sol)"
-        Nuke.loadImage(with: photo.img_src, into: photoImage)
-    }
+    private let roverCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.isScrollEnabled = true
+        collectionView.register(CameraPhotosCollectionViewCell.self, forCellWithReuseIdentifier: "roverphotocell")
 
+        
+        return collectionView
+    }()
+    
+    func setPhotos(photo: [Photos]) {
+        photos = photo
+    }
+    
+    private func configureView() {
+        addSubview(roverCollectionView)
+        roverCollectionView.dataSource = self
+        roverCollectionView.delegate = self
+        
+        NSLayoutConstraint.activate([
+            roverCollectionView.topAnchor.constraint(equalTo: topAnchor),
+            roverCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8), // TODO: - Fix constraint
+            roverCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            roverCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
+    }
 }
 
-// MARK: Configuring view extension
-private extension CameraCollectionViewCell {
-    
-    func configureView(){
-        addSubview(photoImage)
-        addSubview(idLabel)
-        addSubview(solLabel)
-        
-        setConstraints()
+extension CameraCollectionViewCell: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        photos.count
     }
     
-    func setConstraints() {
-        NSLayoutConstraint.activate([
-            photoImage.topAnchor.constraint(equalTo: topAnchor, constant: 4),
-            photoImage.leadingAnchor.constraint(equalTo: leadingAnchor),
-            photoImage.trailingAnchor.constraint(equalTo: trailingAnchor),
-            
-            idLabel.topAnchor.constraint(equalTo: photoImage.bottomAnchor, constant: 12),
-            idLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            
-            solLabel.topAnchor.constraint(equalTo: idLabel.bottomAnchor, constant: 1),
-            solLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            solLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "roverphotocell", for: indexPath) as? CameraPhotosCollectionViewCell else { return UICollectionViewCell() }
+        
+        let photo = photos[indexPath.row]
+        cell.setValues(photo: photo)
+
+        return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: frame.width/2.9, height: frame.height)
     }
 }

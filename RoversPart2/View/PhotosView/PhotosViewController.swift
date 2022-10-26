@@ -20,8 +20,7 @@ final class PhotosViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print(presenter?.getRoverPhotos())
+
         configureView()
     }
     
@@ -113,6 +112,10 @@ extension PhotosViewController: UICollectionViewDelegateFlowLayout, UICollection
         //        cell.set(photo: photo)
 
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width / 2.2, height: view.frame.height / 5)
     }
 }
 

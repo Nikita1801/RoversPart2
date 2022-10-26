@@ -62,7 +62,6 @@ extension CameraPresenter: CameraPresenterProtocol {
 //                    viewController?.showAlert(isGet: false)
                     return
                 }
-                
                 viewController?.updatePhotos(rover)
             }
         }

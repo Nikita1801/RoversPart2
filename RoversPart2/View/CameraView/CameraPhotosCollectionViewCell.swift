@@ -1,14 +1,15 @@
 //
-//  PhotosCollectionViewCell.swift
+//  CameraCollectionViewCell.swift
 //  RoversPart2
 //
-//  Created by Никита Макаревич on 24.10.2022.
+//  Created by Никита Макаревич on 20.10.2022.
 //
 
 import UIKit
 import Nuke
 
-final class PhotosCollectionViewCell: UICollectionViewCell {
+final class CameraPhotosCollectionViewCell: UICollectionViewCell {
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -58,7 +59,7 @@ final class PhotosCollectionViewCell: UICollectionViewCell {
 }
 
 // MARK: Configuring view extension
-private extension PhotosCollectionViewCell {
+private extension CameraPhotosCollectionViewCell {
     
     func configureView(){
         addSubview(photoImage)

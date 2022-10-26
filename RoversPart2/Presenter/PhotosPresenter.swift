@@ -38,7 +38,8 @@ final class PhotosPresenter {
 extension PhotosPresenter: PhotosPresenterProtocol {
     
     func getCameraPhotos() -> [Photos] {
-        return model?.getCameraPhoto() ?? [Photos(id: 1, sol: 1, camera: Camera(name: "1"), img_src: "1", earth_date: "1")]
+        print("SOME SHEEEET")
+        return model?.getCameraPhoto() ?? []
     }
     
     func increaseDate() {
