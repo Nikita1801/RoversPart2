@@ -26,7 +26,6 @@ final class CameraPresenter {
     private var date = Calendar.current.date(byAdding: .year, value: -1, to: Date())
     private var roverName = "Curiosity"
     
-    
     init(model: CameraModelProtocol = CameraModel()) {
         self.model = model
         

@@ -18,27 +18,30 @@ final class CameraViewController: UIViewController {
 
     weak var presenter: CameraPresenterProtocol?
     private var roverData: [String: [Photos]] = [:]
-    private let photosViewController = PhotosViewController()
-//    private var cameraName = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureView()
+        
 
         presenter?.getRoverPhotos()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
     private let roverCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
+        layout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.isScrollEnabled = true
         collectionView.register(CameraCollectionViewCell.self, forCellWithReuseIdentifier: "rovercell")
-//        collectionView.register(HeaderCollectionReusableView.self,
-//                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-//                                withReuseIdentifier: "header")
+        collectionView.register(HeaderCollectionReusableView.self,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                withReuseIdentifier: "header")
         
         return collectionView
     }()
@@ -145,19 +148,30 @@ extension CameraViewController: UICollectionViewDataSource, UICollectionViewDele
         return cell
     }
 
-//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-//        let header = collectionView.dequeueReusableSupplementaryView(
-//            ofKind: UICollectionView.elementKindSectionHeader,
-//            withReuseIdentifier: "header",
-//            for: indexPath) as! HeaderCollectionReusableView// else { return UICollectionReusableView() }
-//        header.congigure()
-//
-//        return header
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-//        return CGSize(width: view.frame.size.width, height: 100)
-//    }
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard let header = collectionView.dequeueReusableSupplementaryView(
+            ofKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: "header",
+            for: indexPath) as? HeaderCollectionReusableView else { return UICollectionReusableView() }
+        
+        let key = Array(roverData.keys)[indexPath.section]
+        header.congigure(key)
+        
+        header.callback = { [weak self] in
+            guard let self = self,
+                  let photos = self.roverData[key]
+            else { return }
+            
+            let viewController = PhotosAssembly.make(photos: photos)
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
+        
+        return header
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: 100, height: 40)
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width / 2.9, height: view.frame.height / 7)
@@ -172,7 +186,6 @@ private extension CameraViewController {
         view.backgroundColor = .white
         roverCollectionView.delegate = self
         roverCollectionView.dataSource = self
-        navigationController?.setNavigationBarHidden(true, animated: true)
         
         horizontalStackView.addSubview(roverName)
         horizontalStackView.addSubview(leftArrowButton)
@@ -193,8 +206,7 @@ private extension CameraViewController {
             horizontalStackView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor),
             horizontalStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             horizontalStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            // Исправить
-            horizontalStackView.heightAnchor.constraint(equalToConstant: 64),
+            horizontalStackView.heightAnchor.constraint(lessThanOrEqualToConstant: 70),
 
             roverName.topAnchor.constraint(equalTo: horizontalStackView.topAnchor, constant: 5),
             roverName.leadingAnchor.constraint(equalTo: horizontalStackView.leadingAnchor),

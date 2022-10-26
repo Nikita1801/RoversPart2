@@ -9,16 +9,26 @@ import UIKit
 
 final class HeaderCollectionReusableView: UICollectionReusableView {
     
+    var callback: (() -> Void)?
+    
     private lazy var cameraName: UIButton = {
         let button = UIButton()
         button.setTitle("RHAZ", for: .normal)
+        button.setTitleColor(UIColor.black, for: .normal)
         button.titleLabel?.font = UIFont(name: "Helvetica Bold", size: 16)
+        button.addTarget(self, action: #selector(openPhotos), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
     }()
     
-    func congigure() {
+    @objc private func openPhotos() {
+        callback?()
+    }
+    
+    func congigure(_ camera: String) {
         backgroundColor = .white
+        cameraName.setTitle(camera, for: .normal)
         addSubview(cameraName)
         
         setConstraints()

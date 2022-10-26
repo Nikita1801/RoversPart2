@@ -15,13 +15,14 @@ protocol PhotosViewControllerProtocol: AnyObject {
 
 final class PhotosViewController: UIViewController {
     
-    private var presenter: PhotosPresenterProtocol?
+    var presenter: PhotosPresenterProtocol?
     private var photos: [RoverData]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        configureView()
+        print(presenter?.getRoverPhotos())
+        configureView()
     }
     
     private let collectionView: UICollectionView = {
@@ -100,67 +101,74 @@ extension PhotosViewController: PhotosViewControllerProtocol {
 }
 
 // MARK: UICollectionView extension
-//extension PhotosViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        7
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photocell", for: indexPath) as? PhotosCollectionViewCell else { return UICollectionViewCell() }
-//
+extension PhotosViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        7
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photocell", for: indexPath) as? PhotosCollectionViewCell else { return UICollectionViewCell() }
+
 //        guard let photo = photos?[indexPath.row] else { return UICollectionViewCell() }
-//        //        cell.set(photo: photo)
-//
-//        return cell
-//    }
-//}
+        //        cell.set(photo: photo)
+
+        return cell
+    }
+}
 
 // MARK: Configuring view extension
 private extension PhotosViewController {
-//    func configureView() {
-//        view.backgroundColor = .white
-//        collectionView.delegate = self
-//        collectionView.dataSource = self
-//        //        navigationController?.setNavigationBarHidden(true, animated: true)
-//
-//        horizontalStackView.addSubview(roverName)
-//        horizontalStackView.addSubview(leftArrowButton)
-//        horizontalStackView.addSubview(rightArrowButton)
-//        view.addSubview(dateLabel)
-//        view.addSubview(horizontalStackView)
-//        view.addSubview(collectionView)
-//
-//        setConstraints()
-//    }
-//
-//    func setConstraints() {
-//        NSLayoutConstraint.activate([
-//            dateLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 58),
-//            dateLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-//
-//            horizontalStackView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor),
-//            horizontalStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-//            horizontalStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            // Исправить
-//            horizontalStackView.heightAnchor.constraint(equalToConstant: 64),
-//
-//            roverName.topAnchor.constraint(equalTo: horizontalStackView.topAnchor, constant: 5),
-//            roverName.leadingAnchor.constraint(equalTo: horizontalStackView.leadingAnchor),
-//
-//            leftArrowButton.topAnchor.constraint(equalTo: horizontalStackView.topAnchor),
-//            leftArrowButton.trailingAnchor.constraint(equalTo: rightArrowButton.leadingAnchor, constant: 0),
-//            leftArrowButton.widthAnchor.constraint(equalToConstant: 60),
-//            leftArrowButton.heightAnchor.constraint(equalToConstant: 60),
-//
-//            rightArrowButton.topAnchor.constraint(equalTo: horizontalStackView.topAnchor),
-//            rightArrowButton.trailingAnchor.constraint(equalTo: horizontalStackView.trailingAnchor),
-//            rightArrowButton.widthAnchor.constraint(equalToConstant: 60),
-//            rightArrowButton.heightAnchor.constraint(equalToConstant: 60),
-//
-//            collectionView.topAnchor.constraint(equalTo: horizontalStackView.bottomAnchor),
-//            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-//            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-//        ])
-//    }
+    func configureView() {
+        view.backgroundColor = .white
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        setNavigationBar()
+
+        horizontalStackView.addSubview(roverName)
+        horizontalStackView.addSubview(leftArrowButton)
+        horizontalStackView.addSubview(rightArrowButton)
+        view.addSubview(dateLabel)
+        view.addSubview(horizontalStackView)
+        view.addSubview(collectionView)
+
+        setConstraints()
+    }
+    
+    func setNavigationBar() {
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        let backButton = UIBarButtonItem()
+        backButton.title = "back"
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+    }
+
+    func setConstraints() {
+        NSLayoutConstraint.activate([
+            dateLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5),
+            dateLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+
+            horizontalStackView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor),
+            horizontalStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            horizontalStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            // Исправить
+            horizontalStackView.heightAnchor.constraint(equalToConstant: 64),
+
+            roverName.topAnchor.constraint(equalTo: horizontalStackView.topAnchor, constant: 5),
+            roverName.leadingAnchor.constraint(equalTo: horizontalStackView.leadingAnchor),
+
+            leftArrowButton.topAnchor.constraint(equalTo: horizontalStackView.topAnchor),
+            leftArrowButton.trailingAnchor.constraint(equalTo: rightArrowButton.leadingAnchor, constant: 0),
+            leftArrowButton.widthAnchor.constraint(equalToConstant: 60),
+            leftArrowButton.heightAnchor.constraint(equalToConstant: 60),
+
+            rightArrowButton.topAnchor.constraint(equalTo: horizontalStackView.topAnchor),
+            rightArrowButton.trailingAnchor.constraint(equalTo: horizontalStackView.trailingAnchor),
+            rightArrowButton.widthAnchor.constraint(equalToConstant: 60),
+            rightArrowButton.heightAnchor.constraint(equalToConstant: 60),
+
+            collectionView.topAnchor.constraint(equalTo: horizontalStackView.bottomAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
 }
