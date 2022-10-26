@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CameraCollectionReusableView: UICollectionReusableView {
+final class HeaderCollectionReusableView: UICollectionReusableView {
     
     private lazy var cameraName: UIButton = {
         let button = UIButton()

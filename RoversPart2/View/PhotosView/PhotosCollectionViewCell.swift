@@ -7,6 +7,6 @@
 
 import UIKit
 
-final class PhotosCollectionViewCell {
+final class PhotosCollectionViewCell: UICollectionViewCell {
     
 }

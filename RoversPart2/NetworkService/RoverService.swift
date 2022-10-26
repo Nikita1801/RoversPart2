@@ -8,7 +8,6 @@
 import Foundation
 
 protocol RoverServiceProtocol {
-    
     /// requesting data and decoding into RoverData
     func getRoverPhotos(url: String, completionHandler: @escaping (RoverData?) -> Void)
 }

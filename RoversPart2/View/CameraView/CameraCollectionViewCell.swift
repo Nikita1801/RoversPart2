@@ -24,6 +24,7 @@ final class CameraCollectionViewCell: UICollectionViewCell {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.layer.cornerRadius = 4
+        image.contentMode = .scaleToFill
         image.clipsToBounds = true
         
         return image
@@ -50,7 +51,6 @@ final class CameraCollectionViewCell: UICollectionViewCell {
     }()
     
     func setValues(photo: Photos) {
-        print("123")
         idLabel.text = "id #\(photo.id)"
         solLabel.text = "СОЛ #\(photo.sol)"
         Nuke.loadImage(with: photo.img_src, into: photoImage)
@@ -73,12 +73,14 @@ private extension CameraCollectionViewCell {
         NSLayoutConstraint.activate([
             photoImage.topAnchor.constraint(equalTo: topAnchor, constant: 4),
             photoImage.leadingAnchor.constraint(equalTo: leadingAnchor),
+            photoImage.trailingAnchor.constraint(equalTo: trailingAnchor),
             
-            idLabel.topAnchor.constraint(equalTo: photoImage.bottomAnchor, constant: 5),
+            idLabel.topAnchor.constraint(equalTo: photoImage.bottomAnchor, constant: 12),
             idLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             
-            solLabel.topAnchor.constraint(equalTo: idLabel.bottomAnchor, constant: 5),
-            solLabel.leadingAnchor.constraint(equalTo: leadingAnchor)
+            solLabel.topAnchor.constraint(equalTo: idLabel.bottomAnchor, constant: 1),
+            solLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            solLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 }
