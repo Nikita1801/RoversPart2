@@ -24,7 +24,7 @@ final class CameraPresenter {
     var viewController: CameraViewControllerProtocol?
     private let model: CameraModelProtocol
     private var date = Calendar.current.date(byAdding: .year, value: -1, to: Date())
-    private var roverName = "curiosity"
+    private var roverName = "Curiosity"
     
     
     init(model: CameraModelProtocol = CameraModel()) {
@@ -72,6 +72,7 @@ extension CameraPresenter: CameraPresenterProtocol {
  
 extension CameraPresenter: SettingsHandle {
     func getSelectedRover(_ rover: String) {
-        print("Camera:", rover)
+        roverName = rover
+        getRoverPhotos()
     }
 }

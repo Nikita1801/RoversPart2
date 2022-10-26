@@ -28,7 +28,7 @@ final class CameraViewController: UIViewController {
         presenter?.getRoverPhotos()
     }
     
-    private let collectionView: UICollectionView = {
+    private let roverCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -100,6 +100,8 @@ final class CameraViewController: UIViewController {
 // MARK: - CameraViewControllerProtocol extension
 extension CameraViewController: CameraViewControllerProtocol {
     func updatePhotos(_ rovers: [String : [Photos]]) {
+//        roverName.text = presenter.rover
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY-MM-dd"
 
@@ -112,31 +114,40 @@ extension CameraViewController: CameraViewControllerProtocol {
         }
 
         roverData = rovers
+        roverCollectionView.reloadData()
     }
 }
 
 // MARK: - UICollcetionView extension
-extension CameraViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-
+extension CameraViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        roverData.keys.count
+        return roverData.keys.count
     }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let key = Array(roverData.keys)[section]
 
+        print(roverData[key]?.count ?? 0)
         return roverData[key]?.count ?? 0
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        print("RoverCell __________")
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "rovercell", for: indexPath) as? CameraCollectionViewCell else { return UICollectionViewCell() }
-//        section = Array(roverData.keys)[indexPath.section]
+        
         let key = Array(roverData.keys)[indexPath.section]
         guard let photos = roverData[key] else { return UICollectionViewCell() }
         let photo = photos[indexPath.row]
+        print(photo)
         cell.setValues(photo: photo)
 
         return cell
     }
+
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        return CGSize(width: 138, height: 116)
+//    }
 }
 
 // MARK: - Configuring UI extension
@@ -144,8 +155,8 @@ private extension CameraViewController {
     /// Configuring UI
     func configureView() {
         view.backgroundColor = .white
-        collectionView.delegate = self
-        collectionView.dataSource = self
+        roverCollectionView.delegate = self
+        roverCollectionView.dataSource = self
         navigationController?.setNavigationBarHidden(true, animated: true)
         
         horizontalStackView.addSubview(roverName)
@@ -153,7 +164,7 @@ private extension CameraViewController {
         horizontalStackView.addSubview(rightArrowButton)
         view.addSubview(dateLabel)
         view.addSubview(horizontalStackView)
-        view.addSubview(collectionView)
+        view.addSubview(roverCollectionView)
         
         setConstraints()
     }
@@ -181,10 +192,10 @@ private extension CameraViewController {
             rightArrowButton.widthAnchor.constraint(equalToConstant: 60),
             rightArrowButton.heightAnchor.constraint(equalToConstant: 60),
             
-            collectionView.topAnchor.constraint(equalTo: horizontalStackView.bottomAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            roverCollectionView.topAnchor.constraint(equalTo: horizontalStackView.bottomAnchor),
+            roverCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
+            roverCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            roverCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
     

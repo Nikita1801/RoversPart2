@@ -29,6 +29,7 @@
 		A7CFDC5629019C6E008589E3 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CFDC5529019C6E008589E3 /* UIColor+Extension.swift */; };
 		A7CFDC5829019F08008589E3 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CFDC5729019F08008589E3 /* SettingsTableViewCell.swift */; };
 		A7CFDC5A2901B25A008589E3 /* CameraCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CFDC592901B25A008589E3 /* CameraCollectionViewCell.swift */; };
+		A7DE9D27290886550026CEFC /* CameraCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DE9D25290886550026CEFC /* CameraCollectionReusableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		A7CFDC5529019C6E008589E3 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		A7CFDC5729019F08008589E3 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		A7CFDC592901B25A008589E3 /* CameraCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCollectionViewCell.swift; sourceTree = "<group>"; };
+		A7DE9D25290886550026CEFC /* CameraCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCollectionReusableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 			children = (
 				A7CFDC43290173B8008589E3 /* CameraViewController.swift */,
 				A7CFDC592901B25A008589E3 /* CameraCollectionViewCell.swift */,
+				A7DE9D25290886550026CEFC /* CameraCollectionReusableView.swift */,
 			);
 			path = CameraView;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 				A7CFDC4B290177FD008589E3 /* CameraPresenter.swift in Sources */,
 				A78CE1A129070FF8000C88A6 /* CameraAssembly.swift in Sources */,
 				A78CE19429066EEB000C88A6 /* PhotosViewController.swift in Sources */,
+				A7DE9D27290886550026CEFC /* CameraCollectionReusableView.swift in Sources */,
 				A7CFDC46290173D0008589E3 /* SettingsViewController.swift in Sources */,
 				A7CFDC3029016E88008589E3 /* SceneDelegate.swift in Sources */,
 				A7CFDC5129017C76008589E3 /* RoverData.swift in Sources */,

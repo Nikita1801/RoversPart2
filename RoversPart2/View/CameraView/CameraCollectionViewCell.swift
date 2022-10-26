@@ -31,6 +31,7 @@ final class CameraCollectionViewCell: UICollectionViewCell {
     
     private let idLabel: UILabel = {
         let label = UILabel()
+        label.text = "id #10212"
         label.font = UIFont(name: "Helvetica", size: 13)
         label.textColor = UIColor.customBlack
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -40,6 +41,7 @@ final class CameraCollectionViewCell: UICollectionViewCell {
     
     private let solLabel: UILabel = {
         let label = UILabel()
+        label.text = "СОЛ #1000"
         label.font = UIFont(name: "Helvetica Bold", size: 8)
         label.textColor = UIColor.customGrey
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -48,6 +50,7 @@ final class CameraCollectionViewCell: UICollectionViewCell {
     }()
     
     func setValues(photo: Photos) {
+        print("123")
         idLabel.text = "id #\(photo.id)"
         solLabel.text = "СОЛ #\(photo.sol)"
         Nuke.loadImage(with: photo.img_src, into: photoImage)
