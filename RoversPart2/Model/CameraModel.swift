@@ -10,6 +10,8 @@ import Foundation
 protocol CameraModelProtocol {
     /// creating URL with roverName & earthDate and call RoverService to make request
     func getRoverPhotos(roverName: String, earthDate: String, completed: @escaping ([String: [Photos]]?) -> Void)
+    /// getting roverInfo dict from network service
+    func getRoverDict() -> [String: [Photos]]?
 }
 
 final class CameraModel {
@@ -56,6 +58,9 @@ final class CameraModel {
 }
 
 extension CameraModel: CameraModelProtocol {
+    func getRoverDict() -> [String : [Photos]]? {
+        sortedCamerasDict
+    }
 
     func getRoverPhotos(roverName: String, earthDate: String, completed: @escaping ([String: [Photos]]?) -> Void) {
         

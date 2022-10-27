@@ -14,6 +14,7 @@ protocol PhotosPresenterProtocol {
     func increaseDate()
     /// Decreasing the date by 1 day
     func decreaseDate()
+    /// Get photos from presenter
     func getCameraPhotos() -> [Photos]
 }
 
@@ -27,18 +28,19 @@ final class PhotosPresenter {
     init(model: PhotosModel) {
         self.model = model
         
-        let stringDate = "2021-08-23"
+        let stringDate = "2021-08-22"
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         date = dateFormatter.date(from: stringDate)
     }
-    
 }
 
+// MARK: - PhotosPresenterProtocol extension
 extension PhotosPresenter: PhotosPresenterProtocol {
-    
     func getCameraPhotos() -> [Photos] {
-        roverName = model?.getCameraPhoto().first?.rover.name ?? ""
+        if let newName = model?.getCameraPhoto().first?.rover.name {
+            roverName = newName
+        }
         return model?.getCameraPhoto() ?? []
     }
     

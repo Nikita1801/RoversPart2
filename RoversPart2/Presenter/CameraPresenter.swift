@@ -14,13 +14,13 @@ protocol CameraPresenterProtocol: SettingsHandle {
     func increaseDate()
     /// Decreasing the date by 1 day
     func decreaseDate()
-    
+    /// cmeraVC protocol
     var viewController: CameraViewControllerProtocol? { get }
+    /// Get photos from presenter
+    func getRoverData() -> [String : [Photos]]?
 }
 
-
 final class CameraPresenter {
-    
     var viewController: CameraViewControllerProtocol?
     private let model: CameraModelProtocol
     private var date = Calendar.current.date(byAdding: .year, value: -1, to: Date())
@@ -29,14 +29,18 @@ final class CameraPresenter {
     init(model: CameraModelProtocol = CameraModel()) {
         self.model = model
         
-        let stringDate = "2021-08-23"
+        let stringDate = "2021-08-22"
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         date = dateFormatter.date(from: stringDate)
     }
 }
 
+// MARK: - CameraPresenterProtocol extension
 extension CameraPresenter: CameraPresenterProtocol {
+    func getRoverData() -> [String : [Photos]]? {
+        model.getRoverDict()
+    }
     
     func increaseDate() {
         guard let lastDate = date else { return }
@@ -58,16 +62,14 @@ extension CameraPresenter: CameraPresenterProtocol {
         
         model.getRoverPhotos(roverName: roverName, earthDate: earthDate) { [weak viewController] rover in
             DispatchQueue.main.async {
-                guard let rover = rover else {
-//                    viewController?.showAlert(isGet: false)
-                    return
-                }
+                guard let rover = rover else { return }
                 viewController?.updatePhotos(rover, name: self.roverName, date: earthDate)
             }
         }
     }
 }
- 
+
+// MARK: - SettingsHandle extension
 extension CameraPresenter: SettingsHandle {
     func getSelectedRover(_ rover: String) {
         roverName = rover

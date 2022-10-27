@@ -20,7 +20,6 @@ final class PhotosViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
         configureView()
     }
@@ -50,14 +49,14 @@ final class PhotosViewController: UIViewController {
         return UIBarButtonItem(image: UIImage(named: "arrowleft.png"),
                                style: .plain,
                                target: self,
-                               action: #selector(increaseDate))
+                               action: #selector(decreaseDate))
     }()
     
     private lazy var rightArrowButton: UIBarButtonItem = {
         return UIBarButtonItem(image: UIImage(named: "arrowright.png"),
                                style: .plain,
                                target: self,
-                               action: #selector(decreaseDate))
+                               action: #selector(increaseDate))
     }()
     
     /// Call presenter to increase date by 1 day and make request
@@ -69,12 +68,17 @@ final class PhotosViewController: UIViewController {
     @objc private func decreaseDate() {
         presenter?.decreaseDate()
     }
-    
 }
 
 // MARK: - PhotosViewControllerProtocol extenstion
 extension PhotosViewController: PhotosViewControllerProtocol {
     func updatePhotos() {
+        if presenter?.getCameraPhotos() == [] {
+            showAlert()
+        }
+        else {
+            setLabels()
+        }
         collectionView.reloadData()
     }
 }
@@ -111,6 +115,15 @@ private extension PhotosViewController {
         view.addSubview(collectionView)
         
         setConstraints()
+    }
+    
+    /// Show alert if 0 photos in this day
+    func showAlert() {
+        let alert = UIAlertController(title: "No photos available for this date",
+                                      message: "",
+                                      preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     /// Convert date and set value to dateLabel

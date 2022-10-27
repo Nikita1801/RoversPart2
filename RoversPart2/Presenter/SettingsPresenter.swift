@@ -11,8 +11,11 @@ import Foundation
 protocol SettingsPresenterProtocol: AnyObject {
     var viewController: SettingsViewControllerProtocol? { get }
     var delegate: SettingsHandle? { get set }
+    /// Getting rovers array from model
     func getRovers() -> [String]
+    /// Get selected rover from model
     func getSelectedRover() -> String
+    /// set selected rover to model
     func setSelectedRover(index: Int)
 }
 
@@ -30,6 +33,7 @@ final class SettingsPresenter {
     }
 }
 
+//MARK: - SettingsPresenterProtocol extension
 extension SettingsPresenter: SettingsPresenterProtocol {
     func setSelectedRover(index: Int) {
         model.setSelectedRover(model.rovers[index])

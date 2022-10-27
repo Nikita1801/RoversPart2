@@ -45,7 +45,7 @@ final class CameraViewController: UIViewController {
     
     private var dateLabel: UILabel = {
         let label = UILabel()
-        label.text = "23.08.2021"
+        label.text = "22.08.2021"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor.customGrey
         label.font = UIFont(name: "Helvetica Bold", size: 11)
@@ -110,6 +110,9 @@ extension CameraViewController: CameraViewControllerProtocol {
             dateLabel.text = dateFormatter.string(from: date)
         }
         roverName.text = name
+        if rovers == [:] {
+            showAlert()
+        }
         roverData = rovers
         roverCollectionView.reloadData()
     }
@@ -119,7 +122,7 @@ extension CameraViewController: CameraViewControllerProtocol {
 extension CameraViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return roverData.keys.count
+        return presenter?.getRoverData()?.keys.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -129,6 +132,7 @@ extension CameraViewController: UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "rovercell", for: indexPath) as? CameraCollectionViewCell else { return UICollectionViewCell() }
         
+        //        let key = Array(presenter?.getRoverData().keys)[indexPath.section]
         let key = Array(roverData.keys)[indexPath.section]
         guard let photos = roverData[key] else { return UICollectionViewCell() }
         cell.setPhotos(photo: photos)
@@ -182,6 +186,15 @@ private extension CameraViewController {
         view.addSubview(roverCollectionView)
         
         setConstraints()
+    }
+    
+    /// Show alert if 0 photos in this day
+    func showAlert() {
+        let alert = UIAlertController(title: "No photos available for this date",
+                                      message: "",
+                                      preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     /// Setting up constraints

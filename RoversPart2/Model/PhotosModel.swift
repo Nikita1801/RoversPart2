@@ -20,6 +20,7 @@ final class PhotosModel {
     private var sortedCamerasDict: [String: [Photos]] = [:]
     private let nasaURL = "https://api.nasa.gov/mars-photos/api/v1/rovers/"
     private let apiKey = "Uls3MlNWdgwJ9Vzmw8kXbdUdvRixsSz72ulUD3AL"
+    private var selectedCamera: String?
     
     init(photos: [Photos],
          network: RoverServiceProtocol = RoverService()) {
@@ -73,11 +74,16 @@ extension PhotosModel: PhotosModelProtocol {
         network.getRoverPhotos(url: url) { roverData in
             guard let roverPhotos = roverData?.photos else { return }
             self.createCamsModelDict(camsInfoArray: roverPhotos)
-            guard let cameraName = self.photos.first?.camera.name else { return }
-            guard let newPhotos = self.sortedCamerasDict[cameraName] else { return }
-            self.photos = newPhotos
+            if self.photos != [] {
+                self.selectedCamera = self.photos.first?.camera.name
+            }
+            guard let cameraName = self.selectedCamera else { return }
+            if let newPhotos = self.sortedCamerasDict[cameraName] {
+                self.photos = newPhotos
+            }
+            else { self.photos = [] }
+
             completed()
         }
-        
     }
 }
