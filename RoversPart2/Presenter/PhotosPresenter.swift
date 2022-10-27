@@ -38,7 +38,7 @@ final class PhotosPresenter {
 extension PhotosPresenter: PhotosPresenterProtocol {
     
     func getCameraPhotos() -> [Photos] {
-        print("SOME SHEEEET")
+        roverName = model?.getCameraPhoto().first?.rover.name ?? ""
         return model?.getCameraPhoto() ?? []
     }
     
@@ -60,15 +60,10 @@ extension PhotosPresenter: PhotosPresenterProtocol {
         guard let date = date else { return }
         let earthDate = dateFormater.string(from: date)
         
-//        model.getRoverPhotos(roverName: roverName, earthDate: earthDate) { [weak viewController] rover in
-//            DispatchQueue.main.async {
-//                guard let rover = rover else {
-////                    viewController?.showAlert(isGet: false)
-//                    return
-//                }
-//
-//                viewController?.updatePhotos(rover)
-//            }
-//        }
+        model?.getRoverPhotos(roverName: roverName, earthDate: earthDate) {
+            DispatchQueue.main.async {
+                self.viewController?.updatePhotos()
+            }
+        }
     }
 }

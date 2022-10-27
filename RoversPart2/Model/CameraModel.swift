@@ -32,7 +32,8 @@ final class CameraModel {
                                           sol: photo.id,
                                           camera: photo.camera,
                                           img_src: photo.img_src,
-                                          earth_date: photo.earth_date))
+                                          earth_date: photo.earth_date,
+                                          rover: photo.rover))
                 sortedCamerasDict[camName] = photosArray
             }else {
                 var photosArray : [Photos] = []
@@ -40,14 +41,15 @@ final class CameraModel {
                                           sol: photo.id,
                                           camera: photo.camera,
                                           img_src: photo.img_src,
-                                          earth_date: photo.earth_date))
+                                          earth_date: photo.earth_date,
+                                          rover: photo.rover))
                 sortedCamerasDict[camName] = photosArray
             }
         }
         
         print(sortedCamerasDict.keys)
         for key in sortedCamerasDict.keys {
-            print("\(key): \(sortedCamerasDict[key]?.count)")
+            print("\(key): \(String(describing: sortedCamerasDict[key]?.count))")
         }
     }
     

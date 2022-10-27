@@ -58,5 +58,4 @@ final class HeaderCollectionReusableView: UICollectionReusableView {
             arrow.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
-    
 }

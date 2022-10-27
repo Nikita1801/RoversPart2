@@ -17,8 +17,13 @@ struct Photos: Codable, Equatable {
     let camera: Camera
     let img_src: String
     let earth_date: String
+    let rover: Rover
 }
 
 struct Camera: Codable, Equatable {
+    let name: String
+}
+
+struct Rover: Codable, Equatable {
     let name: String
 }

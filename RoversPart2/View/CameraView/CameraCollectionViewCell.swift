@@ -13,7 +13,7 @@ final class CameraCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+
         configureView()
     }
     
@@ -35,6 +35,7 @@ final class CameraCollectionViewCell: UICollectionViewCell {
     
     func setPhotos(photo: [Photos]) {
         photos = photo
+        roverCollectionView.reloadData()
     }
     
     private func configureView() {
@@ -51,9 +52,10 @@ final class CameraCollectionViewCell: UICollectionViewCell {
     }
 }
 
+// MARK: - UICollectionView extension
 extension CameraCollectionViewCell: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        photos.count
+        return photos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -65,6 +67,6 @@ extension CameraCollectionViewCell: UICollectionViewDelegateFlowLayout, UICollec
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: frame.width/2.9, height: frame.height)
+        return CGSize(width: frame.width / 2.9, height: frame.height)
     }
 }

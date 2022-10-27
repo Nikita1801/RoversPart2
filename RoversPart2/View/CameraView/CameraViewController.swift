@@ -9,22 +9,19 @@ import UIKit
 
 protocol CameraViewControllerProtocol: UIViewController {
     /// getting data and displaying it
-    func updatePhotos(_ rovers: [String: [Photos]])
-//    func showAlert(isGet: Bool)
+    func updatePhotos(_ rovers: [String : [Photos]], name: String, date: String)
+    //    func showAlert(isGet: Bool)
 }
 
-
 final class CameraViewController: UIViewController {
-
+    
     weak var presenter: CameraPresenterProtocol?
     private var roverData: [String: [Photos]] = [:]
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureView()
-        
-
         presenter?.getRoverPhotos()
     }
     
@@ -101,24 +98,18 @@ final class CameraViewController: UIViewController {
     @objc private func decreaseDate() {
         presenter?.decreaseDate()
     }
-    
 }
 
 // MARK: - CameraViewControllerProtocol extension
 extension CameraViewController: CameraViewControllerProtocol {
-    func updatePhotos(_ rovers: [String : [Photos]]) {
-
+    func updatePhotos(_ rovers: [String : [Photos]], name: String, date: String) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY-MM-dd"
-
-        if rovers.count > 0 {
-            let date = dateFormatter.date(from: rovers["RHAZ"]?[0].earth_date ?? "")
+        if let date = dateFormatter.date(from: date) {
             dateFormatter.dateFormat = "dd.MM.YYYY"
-
-            if let date = date { dateLabel.text = dateFormatter.string(from: date) }
-            else { dateLabel.text = "No date availible" }
+            dateLabel.text = dateFormatter.string(from: date)
         }
-        
+        roverName.text = name
         roverData = rovers
         roverCollectionView.reloadData()
     }
@@ -128,14 +119,11 @@ extension CameraViewController: CameraViewControllerProtocol {
 extension CameraViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        print(roverData.keys.count)
-        print("____________________")
         return roverData.keys.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let key = Array(roverData.keys)[section]
-        return 1 //roverData[key]?.count ?? 0
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -143,12 +131,11 @@ extension CameraViewController: UICollectionViewDataSource, UICollectionViewDele
         
         let key = Array(roverData.keys)[indexPath.section]
         guard let photos = roverData[key] else { return UICollectionViewCell() }
-//        let photos = photos[indexPath.row]
         cell.setPhotos(photo: photos)
-
+        
         return cell
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard let header = collectionView.dequeueReusableSupplementaryView(
             ofKind: UICollectionView.elementKindSectionHeader,
@@ -169,15 +156,14 @@ extension CameraViewController: UICollectionViewDataSource, UICollectionViewDele
         
         return header
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: 100, height: 40)
+        return CGSize(width: view.frame.width, height: 40)
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width, height: view.frame.height / 7)
     }
-    
-    
 }
 
 // MARK: - Configuring UI extension
@@ -208,15 +194,15 @@ private extension CameraViewController {
             horizontalStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             horizontalStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             horizontalStackView.heightAnchor.constraint(lessThanOrEqualToConstant: 70),
-
+            
             roverName.topAnchor.constraint(equalTo: horizontalStackView.topAnchor, constant: 5),
             roverName.leadingAnchor.constraint(equalTo: horizontalStackView.leadingAnchor),
-
+            
             leftArrowButton.topAnchor.constraint(equalTo: horizontalStackView.topAnchor),
             leftArrowButton.trailingAnchor.constraint(equalTo: rightArrowButton.leadingAnchor, constant: 0),
             leftArrowButton.widthAnchor.constraint(equalToConstant: 60),
             leftArrowButton.heightAnchor.constraint(equalToConstant: 60),
-
+            
             rightArrowButton.topAnchor.constraint(equalTo: horizontalStackView.topAnchor),
             rightArrowButton.trailingAnchor.constraint(equalTo: horizontalStackView.trailingAnchor),
             rightArrowButton.widthAnchor.constraint(equalToConstant: 60),

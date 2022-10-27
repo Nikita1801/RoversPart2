@@ -60,7 +60,6 @@ final class CameraPhotosCollectionViewCell: UICollectionViewCell {
 
 // MARK: Configuring view extension
 private extension CameraPhotosCollectionViewCell {
-    
     func configureView(){
         addSubview(photoImage)
         addSubview(idLabel)

@@ -30,10 +30,7 @@ final class TabBarController: UITabBarController {
         
         guard let settingViewControleer = settingsPresenter.viewController,
               let cameraViewController = cameraPresenter.viewController
-        else {
-            print(settingsPresenter.viewController)
-            print(cameraPresenter.viewController)
-            return }
+        else { return }
 
         
         viewControllers = [

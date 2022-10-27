@@ -18,14 +18,10 @@ final class SettingsViewController: UIViewController {
         
         configureView()
         tableView.reloadData()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        let indexPath = IndexPath(row: 0, section: 0)
+        
+        let indexPath = IndexPath(row: 2, section: 0)
         tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark // TODO: - Check on first launch
         tableView.selectRow(at: indexPath, animated: true, scrollPosition: .bottom)
-        
     }
     
     private let headLableFirst: UILabel = {
