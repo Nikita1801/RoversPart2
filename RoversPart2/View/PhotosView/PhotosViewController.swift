@@ -121,7 +121,7 @@ extension PhotosViewController: UICollectionViewDelegateFlowLayout, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width * 0.445 , height: UIScreen.main.bounds.height * 0.15)
+        return CGSize(width: UIScreen.main.bounds.width * 0.44 , height: UIScreen.main.bounds.height * 0.15)
     }
 }
 
