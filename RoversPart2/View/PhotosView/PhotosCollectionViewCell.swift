@@ -71,11 +71,12 @@ private extension PhotosCollectionViewCell {
             photoImage.topAnchor.constraint(equalTo: topAnchor, constant: 4),
             photoImage.leadingAnchor.constraint(equalTo: leadingAnchor),
             photoImage.trailingAnchor.constraint(equalTo: trailingAnchor),
+            photoImage.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.72),
             
-            idLabel.topAnchor.constraint(equalTo: photoImage.bottomAnchor, constant: 12),
+            idLabel.topAnchor.constraint(equalTo: photoImage.bottomAnchor, constant: 7),
             idLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             
-            solLabel.topAnchor.constraint(equalTo: idLabel.bottomAnchor, constant: 1),
+            solLabel.topAnchor.constraint(equalTo: idLabel.bottomAnchor, constant: 3),
             solLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             solLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])

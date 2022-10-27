@@ -25,6 +25,7 @@ final class CameraCollectionViewCell: UICollectionViewCell {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.showsHorizontalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.isScrollEnabled = true
         collectionView.register(CameraPhotosCollectionViewCell.self, forCellWithReuseIdentifier: "roverphotocell")
@@ -33,6 +34,7 @@ final class CameraCollectionViewCell: UICollectionViewCell {
         return collectionView
     }()
     
+    /// Setting up values
     func setPhotos(photo: [Photos]) {
         photos = photo
         roverCollectionView.reloadData()
@@ -45,7 +47,7 @@ final class CameraCollectionViewCell: UICollectionViewCell {
         
         NSLayoutConstraint.activate([
             roverCollectionView.topAnchor.constraint(equalTo: topAnchor),
-            roverCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8), // TODO: - Fix constraint
+            roverCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             roverCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             roverCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
@@ -53,7 +55,7 @@ final class CameraCollectionViewCell: UICollectionViewCell {
 }
 
 // MARK: - UICollectionView extension
-extension CameraCollectionViewCell: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+extension CameraCollectionViewCell: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photos.count
     }
@@ -67,6 +69,6 @@ extension CameraCollectionViewCell: UICollectionViewDelegateFlowLayout, UICollec
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: frame.width / 2.9, height: frame.height)
+        return CGSize(width: frame.width * 0.35, height: frame.height)
     }
 }

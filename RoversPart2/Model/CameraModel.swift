@@ -54,7 +54,6 @@ final class CameraModel {
             print("\(key): \(String(describing: sortedCamerasDict[key]?.count))")
         }
     }
-    
 }
 
 extension CameraModel: CameraModelProtocol {

@@ -29,6 +29,7 @@ final class SettingsTableViewCell: UITableViewCell {
         return label
     }()
     
+    /// Setting up values
     func setRover(roverName: String){
         roverNameLable.text = roverName
     }

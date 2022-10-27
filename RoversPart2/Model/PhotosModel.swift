@@ -58,9 +58,9 @@ final class PhotosModel {
             print("\(key): \(String(describing: sortedCamerasDict[key]?.count))")
         }
     }
-    
 }
 
+// MARK: - PhotosModelProtocol extension
 extension PhotosModel: PhotosModelProtocol {
     func getCameraPhoto() -> [Photos] {
         photos

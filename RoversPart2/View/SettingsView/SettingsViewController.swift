@@ -17,11 +17,14 @@ final class SettingsViewController: UIViewController {
         super.viewDidLoad()
         
         configureView()
-        tableView.reloadData()
-        
-        let indexPath = IndexPath(row: 2, section: 0)
-        tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark // TODO: - Check on first launch
-        tableView.selectRow(at: indexPath, animated: true, scrollPosition: .bottom)
+        tableView.performBatchUpdates(nil) { [weak self] _ in
+            let indexPath = IndexPath(row: 2, section: 0)
+            guard let cell = self?.tableView.cellForRow(at: indexPath) else { return }
+            cell.accessoryType = .checkmark
+            cell.accessoryView?.isHidden = false
+            self?.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .bottom)
+        }
+    
     }
     
     private let headLableFirst: UILabel = {
@@ -52,7 +55,6 @@ final class SettingsViewController: UIViewController {
         
         return tableView
     }()
-    
 }
 
 // MARK: - UITableView extension

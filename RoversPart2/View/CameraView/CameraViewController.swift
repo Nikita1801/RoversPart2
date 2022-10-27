@@ -9,15 +9,13 @@ import UIKit
 
 protocol CameraViewControllerProtocol: UIViewController {
     /// getting data and displaying it
-    func updatePhotos(_ rovers: [String : [Photos]], name: String, date: String)
-    //    func showAlert(isGet: Bool)
+    func updatePhotos(name: String, date: String)
 }
 
 final class CameraViewController: UIViewController {
     
     weak var presenter: CameraPresenterProtocol?
-    private var roverData: [String: [Photos]] = [:]
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,6 +30,7 @@ final class CameraViewController: UIViewController {
     private let roverCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
+        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.isScrollEnabled = true
@@ -102,7 +101,7 @@ final class CameraViewController: UIViewController {
 
 // MARK: - CameraViewControllerProtocol extension
 extension CameraViewController: CameraViewControllerProtocol {
-    func updatePhotos(_ rovers: [String : [Photos]], name: String, date: String) {
+    func updatePhotos(name: String, date: String) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY-MM-dd"
         if let date = dateFormatter.date(from: date) {
@@ -110,16 +109,15 @@ extension CameraViewController: CameraViewControllerProtocol {
             dateLabel.text = dateFormatter.string(from: date)
         }
         roverName.text = name
-        if rovers == [:] {
+        if presenter?.getRoverData()  == [:] {
             showAlert()
         }
-        roverData = rovers
         roverCollectionView.reloadData()
     }
 }
 
 // MARK: - UICollcetionView extension
-extension CameraViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension CameraViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return presenter?.getRoverData()?.keys.count ?? 0
@@ -130,10 +128,12 @@ extension CameraViewController: UICollectionViewDataSource, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "rovercell", for: indexPath) as? CameraCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "rovercell", for: indexPath) as? CameraCollectionViewCell,
+              let roverData = presenter?.getRoverData()
+        else { return UICollectionViewCell() }
         
-        //        let key = Array(presenter?.getRoverData().keys)[indexPath.section]
         let key = Array(roverData.keys)[indexPath.section]
+
         guard let photos = roverData[key] else { return UICollectionViewCell() }
         cell.setPhotos(photo: photos)
         
@@ -144,14 +144,17 @@ extension CameraViewController: UICollectionViewDataSource, UICollectionViewDele
         guard let header = collectionView.dequeueReusableSupplementaryView(
             ofKind: UICollectionView.elementKindSectionHeader,
             withReuseIdentifier: "header",
-            for: indexPath) as? HeaderCollectionReusableView else { return UICollectionReusableView() }
+            for: indexPath) as? HeaderCollectionReusableView,
+              let roverData = presenter?.getRoverData()
+        else { return UICollectionReusableView() }
         
         let key = Array(roverData.keys)[indexPath.section]
         header.configure(key)
         
         header.callback = { [weak self] in
             guard let self = self,
-                  let photos = self.roverData[key]
+                  //let photos = self.roverData[key]
+                  let photos = roverData[key]
             else { return }
             
             let viewController = PhotosAssembly.make(photos: photos)
@@ -166,7 +169,7 @@ extension CameraViewController: UICollectionViewDataSource, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: view.frame.height / 7)
+        return CGSize(width: view.frame.width, height: view.frame.height * 0.14)
     }
 }
 
@@ -190,7 +193,7 @@ private extension CameraViewController {
     
     /// Show alert if 0 photos in this day
     func showAlert() {
-        let alert = UIAlertController(title: "No photos available for this date",
+        let alert = UIAlertController(title: "Нет доступных фото для выбранной даты",
                                       message: "",
                                       preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil))
@@ -227,5 +230,4 @@ private extension CameraViewController {
             roverCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
-    
 }

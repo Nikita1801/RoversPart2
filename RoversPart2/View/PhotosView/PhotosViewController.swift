@@ -10,7 +10,6 @@ import UIKit
 protocol PhotosViewControllerProtocol: AnyObject {
     /// getting data and displaying it
     func updatePhotos()
-    //    func showAlert(isGet: Bool)
 }
 
 final class PhotosViewController: UIViewController {
@@ -45,18 +44,41 @@ final class PhotosViewController: UIViewController {
         return label
     }()
     
-    private lazy var leftArrowButton: UIBarButtonItem = {
-        return UIBarButtonItem(image: UIImage(named: "arrowleft.png"),
-                               style: .plain,
-                               target: self,
-                               action: #selector(decreaseDate))
+    private lazy var leftArrowBarButton: UIBarButtonItem = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "arrowleft.png"), for: .normal)
+        button.frame = CGRect(x: 0.0, y: 0.0, width: 50, height: 50)
+        button.addTarget(self, action: #selector(decreaseDate), for: .touchUpInside)
+        
+        let arrowBarItem = UIBarButtonItem(customView: button)
+        _ = arrowBarItem.customView?.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        _ = arrowBarItem.customView?.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        return arrowBarItem
     }()
     
-    private lazy var rightArrowButton: UIBarButtonItem = {
-        return UIBarButtonItem(image: UIImage(named: "arrowright.png"),
-                               style: .plain,
-                               target: self,
-                               action: #selector(increaseDate))
+    private lazy var rightArrowBarButton: UIBarButtonItem = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "arrowright.png"), for: .normal)
+        button.frame = CGRect(x: 0.0, y: 0.0, width: 50, height: 50)
+        button.addTarget(self, action: #selector(increaseDate), for: .touchUpInside)
+        
+        let arrowBarItem = UIBarButtonItem(customView: button)
+        _ = arrowBarItem.customView?.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        _ = arrowBarItem.customView?.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        return arrowBarItem
+    }()
+    
+    private let spacing: UIBarButtonItem = {
+        let spacing = UILabel()
+        spacing.frame = CGRect(x: 0.0, y: 0.0, width: 50, height: 50)
+        
+        let spacingItem = UIBarButtonItem(customView: spacing)
+        _ = spacingItem.customView?.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        _ = spacingItem.customView?.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        return spacingItem
     }()
     
     /// Call presenter to increase date by 1 day and make request
@@ -99,7 +121,7 @@ extension PhotosViewController: UICollectionViewDelegateFlowLayout, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width / 2.25, height: view.frame.height / 5.7)
+        return CGSize(width: UIScreen.main.bounds.width * 0.445 , height: UIScreen.main.bounds.height * 0.15)
     }
 }
 
@@ -107,12 +129,11 @@ extension PhotosViewController: UICollectionViewDelegateFlowLayout, UICollection
 private extension PhotosViewController {
     func configureView() {
         view.backgroundColor = .white
+        view.addSubview(collectionView)
         collectionView.delegate = self
         collectionView.dataSource = self
         setNavigationBar()
         setLabels()
-
-        view.addSubview(collectionView)
         
         setConstraints()
     }
@@ -150,8 +171,11 @@ private extension PhotosViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         
         // setting arrows and date
-        navigationItem.rightBarButtonItems = [rightArrowButton, leftArrowButton, UIBarButtonItem.init(customView: dateLabel)]
-
+        navigationItem.setRightBarButtonItems([rightArrowBarButton,
+                                          leftArrowBarButton,
+                                          spacing,
+                                          UIBarButtonItem.init(customView: dateLabel)],
+                                         animated: true)
     }
 
     func setConstraints() {

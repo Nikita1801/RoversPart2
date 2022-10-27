@@ -62,8 +62,7 @@ extension CameraPresenter: CameraPresenterProtocol {
         
         model.getRoverPhotos(roverName: roverName, earthDate: earthDate) { [weak viewController] rover in
             DispatchQueue.main.async {
-                guard let rover = rover else { return }
-                viewController?.updatePhotos(rover, name: self.roverName, date: earthDate)
+                viewController?.updatePhotos(name: self.roverName, date: earthDate)
             }
         }
     }
