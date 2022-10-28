@@ -49,7 +49,7 @@ final class HeaderCollectionReusableView: UICollectionReusableView {
     
     private func setConstraints() {
         NSLayoutConstraint.activate([
-            cameraName.leadingAnchor.constraint(equalTo: leadingAnchor),
+            cameraName.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             cameraName.centerYAnchor.constraint(equalTo: centerYAnchor),
             
             arrow.heightAnchor.constraint(equalToConstant: 20),

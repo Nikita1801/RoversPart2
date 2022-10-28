@@ -52,10 +52,9 @@ final class CameraViewController: UIViewController {
         return label
     }()
     
-    private let horizontalStackView: UIStackView = {
-        let horizontalStackView = UIStackView()
+    private let horizontalView: UIView = {
+        let horizontalStackView = UIView()
         horizontalStackView.translatesAutoresizingMaskIntoConstraints = false
-        horizontalStackView.axis = .horizontal
         
         return horizontalStackView
     }()
@@ -181,11 +180,11 @@ private extension CameraViewController {
         roverCollectionView.delegate = self
         roverCollectionView.dataSource = self
         
-        horizontalStackView.addSubview(roverName)
-        horizontalStackView.addSubview(leftArrowButton)
-        horizontalStackView.addSubview(rightArrowButton)
+        horizontalView.addSubview(roverName)
+        horizontalView.addSubview(leftArrowButton)
+        horizontalView.addSubview(rightArrowButton)
         view.addSubview(dateLabel)
-        view.addSubview(horizontalStackView)
+        view.addSubview(horizontalView)
         view.addSubview(roverCollectionView)
         
         setConstraints()
@@ -206,26 +205,26 @@ private extension CameraViewController {
             dateLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 58),
             dateLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             
-            horizontalStackView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor),
-            horizontalStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            horizontalStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            horizontalStackView.heightAnchor.constraint(lessThanOrEqualToConstant: 70),
+            horizontalView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor),
+            horizontalView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            horizontalView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            horizontalView.heightAnchor.constraint(lessThanOrEqualToConstant: 70),
             
-            roverName.topAnchor.constraint(equalTo: horizontalStackView.topAnchor, constant: 5),
-            roverName.leadingAnchor.constraint(equalTo: horizontalStackView.leadingAnchor),
+            roverName.topAnchor.constraint(equalTo: horizontalView.topAnchor, constant: 5),
+            roverName.leadingAnchor.constraint(equalTo: horizontalView.leadingAnchor),
             
-            leftArrowButton.topAnchor.constraint(equalTo: horizontalStackView.topAnchor),
+            leftArrowButton.topAnchor.constraint(equalTo: horizontalView.topAnchor),
             leftArrowButton.trailingAnchor.constraint(equalTo: rightArrowButton.leadingAnchor, constant: 0),
             leftArrowButton.widthAnchor.constraint(equalToConstant: 60),
             leftArrowButton.heightAnchor.constraint(equalToConstant: 60),
             
-            rightArrowButton.topAnchor.constraint(equalTo: horizontalStackView.topAnchor),
-            rightArrowButton.trailingAnchor.constraint(equalTo: horizontalStackView.trailingAnchor),
+            rightArrowButton.topAnchor.constraint(equalTo: horizontalView.topAnchor),
+            rightArrowButton.trailingAnchor.constraint(equalTo: horizontalView.trailingAnchor),
             rightArrowButton.widthAnchor.constraint(equalToConstant: 60),
             rightArrowButton.heightAnchor.constraint(equalToConstant: 60),
             
-            roverCollectionView.topAnchor.constraint(equalTo: horizontalStackView.bottomAnchor),
-            roverCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            roverCollectionView.topAnchor.constraint(equalTo: horizontalView.bottomAnchor),
+            roverCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             roverCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             roverCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
